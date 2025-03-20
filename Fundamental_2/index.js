@@ -58,6 +58,7 @@ function completeTask(index) {
   completedTaskCount++;
   console.log(`Задача "${task.title}" была завершена.`);
 }
+
 function deleteTask() {
   if (index < 0 || index >= tasks.length) {
     console.log("Задача с таким индексом не найдена");
