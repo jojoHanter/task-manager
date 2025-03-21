@@ -1,13 +1,13 @@
 const movies = [
   {
-    title: "Звёздные войны",
+    title: "Звездные войны",
     year: 1977,
     genre: "Фантастика",
     rating: 8.6,
     duration: 120,
   },
   {
-    title: "Назад в будущее",
+    title: "Назад в будущее",
     year: 1985,
     genre: "Фантастика",
     rating: 8.5,
@@ -28,7 +28,7 @@ const movies = [
     duration: 80,
   },
   {
-    title: "Властелин колец",
+    title: "Властелин колец",
     year: 2001,
     genre: "Фэнтези",
     rating: 8.8,
@@ -51,26 +51,6 @@ let newMovie = [
   },
 ];
 
-function getAllTitles(movies) {
-  return movies.map((movie) => movie.title);
-}
-
-function getMoviesByGenre(movies, genre) {
-  return movies.filter((movie) => movie.genre === "Фантастика");
-}
-
-function isMovieFromYear(movies, year) {
-  return movies.some((movie) => movie.year === 1984);
-}
-
-function getTotalDuration(movies) {
-  return movies.reduce((acc, movie) => acc + movie.duration, 0);
-}
-
-function movieString(movies) {
-  return movies.map((movie) => `${movie.title} (${movie.year})`).join(", ");
-}
-
 movies.push({
   title: "Матрица",
   year: 1999,
@@ -78,6 +58,33 @@ movies.push({
   rating: 8.7,
   duration: 110,
 });
+
+function getAllTitles(movies) {
+  return movies.map((movie) => movie.title);
+}
+// console.log(getAllTitles(movies));
+
+function getMoviesByGenre(movies) {
+  return movies
+    .filter((movie) => movie.genre === "Фантастика")
+    .map((movie) => movie.title);
+}
+// console.log(getMoviesByGenre(movies));
+
+function isMovieFromYear(movies, year) {
+  return movies.some((movie) => movie.year === year);
+}
+
+// console.log(isMovieFromYear(movies));
+
+function getTotalDuration(movies) {
+  return movies.reduce((acc, movie) => acc + movie.duration, 0);
+}
+console.log(getTotalDuration(movies));
+
+function movieString(movies) {
+  return movies.map((movie) => `${movie.title} (${movie.year})`).join(", ");
+}
 
 function dellMovie() {
   return movies.filter((movie) => movie.title !== "Терминатор");
@@ -109,3 +116,18 @@ function dellMoviesTitle() {
 function updateMovies(movies, newMovie) {
   return movies.splice(1, 2, ...newMovie);
 }
+
+module.exports = {
+  movies,
+  getAllTitles,
+  getMoviesByGenre,
+  isMovieFromYear,
+  getTotalDuration,
+  movieString,
+  dellMovie,
+  updateMovieRating,
+  sortMoviesByYear,
+  getUniqueGenres,
+  dellMoviesTitle,
+  updateMovies,
+};
